@@ -20,6 +20,18 @@ WinMain proc hInst:HINSTANCE,hPrevInst:HINSTANCE,CmdLine:LPSTR,CmdShow:DWORD
 	mov		wc.cbSize,sizeof WNDCLASSEX
 	mov		wc.lpfnWndProc,offset WndProc
 	mov		wc.cbWndExtra,DLGWINDOWEXTRA
+	mov		wc.cbClsExtra,0
+	mov		wc.style,3
+	mov		wc.hbrBackground,6
+
+	invoke LoadIcon, NULL, IDI_APPLICATION
+	mov 		wc.hIcon, eax
+
+	invoke LoadCursor, NULL, IDC_ARROW
+	mov 		wc.hCursor, eax
+
+	mov		wc.lpszMenuName,0
+	mov		wc.hIconSm,0
 	push	hInst
 	pop		wc.hInstance
 	mov		wc.lpszClassName,offset ClassName
